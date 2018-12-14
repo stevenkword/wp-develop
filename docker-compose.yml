@@ -20,11 +20,12 @@ services:
        - "8000:80"
      restart: always
      volumes:
-      - ./src:/var/www/html/
+      - ./wordpress-latest:/var/www/html/
      environment:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: wordpress
+
    wpcli:
      depends_on:
        - db
@@ -32,6 +33,6 @@ services:
      image: wordpress:cli
      user: xfs
      volumes: 
-      - ./src:/var/www/html 
+      - ./wordpress-latest:/var/www/html 
 volumes:
     db_data:
